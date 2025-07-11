@@ -3,12 +3,13 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-    seenNumbers = {}
+    newNums = {}
     for(num of nums){
-       if(seenNumbers[num]) {
-        return true
-       }
-       seenNumbers[num] = true
+        newNums[num] = newNums[num] + 1 || 1;
+        if(newNums[num] == 2) {
+            return true 
+        }
+        console.log(newNums[num])
     }  
     return false
 };
