@@ -4,13 +4,19 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    
-    if(nums.length === 2) return [0,1]
-    for(let i = 0; i < nums.length; i++) {
-        for(let j = i+1; j < nums.length; j++) {
-            if(nums[i] + nums[j] === target) {
-                return[i , j]
-            }  
+    const seen = {}; // Use an object as a hash map
+
+    for (let i = 0; i < nums.length; i++) {
+        const currentNum = nums[i];
+        const complement = target - currentNum;
+
+        // Check if the complement exists in our map
+        if (seen[complement] !== undefined) {
+            // If it exists, we found our pair
+            return [seen[complement], i];
         }
+
+        // If we haven't found a pair, store the current number and its index
+        seen[currentNum] = i;
     }
 };
