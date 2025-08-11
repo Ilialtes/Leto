@@ -6,18 +6,14 @@
 var isAnagram = function(s, t) {
     if(s.length !== t.length) return false 
     let sMap = createMap(s)
-    let tMap = createMap(t)
-    console.log(sMap)
-    console.log(tMap)
-    
-    for(char in sMap) {
-        if(sMap[char] !== tMap[char]){
+    for(char of t) {
+        if(!sMap[char]) {
             return false
-        } 
+        }
+        sMap[char]--
     }
     return true
-   //return s.split('').sort().join('') === t.split('').sort().join('')
-};
+}
 
 function createMap(y) {
     let inMap = {}
