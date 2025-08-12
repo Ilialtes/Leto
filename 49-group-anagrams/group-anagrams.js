@@ -1,20 +1,24 @@
+
 /**
  * @param {string[]} strs
  * @return {string[][]}
  */
-var groupAnagrams = function(strs) {
-    wordKeys = {}
+var groupAnagrams = function (strs) {
+    const wordKeys = {}
 
-    if(strs.length === 1) return [[...strs]]
-    
-    for(str of strs) {
-        key = str.split('').sort().join('')
-        console.log(key)
+    if (strs.length === 1) return [[...strs]]
 
-        if(!wordKeys[key]) {
-            wordKeys[key] = []
+    for (str of strs) {
+    const charCount = Array(26).fill(0)
+        for(char of str) {
+            let index = char.charCodeAt(0) - 'a'.charCodeAt(0)
+            charCount[index]++
         }
-        wordKeys[key].push(str)
+        
+        if (!wordKeys[charCount]) {
+            wordKeys[charCount] = []
+        }
+        wordKeys[charCount].push(str)
     }
     return Object.values(wordKeys)
 };
