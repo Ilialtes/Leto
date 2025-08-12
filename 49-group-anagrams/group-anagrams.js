@@ -14,11 +14,11 @@ var groupAnagrams = function (strs) {
             let index = char.charCodeAt(0) - 'a'.charCodeAt(0)
             charCount[index]++
         }
-        
-        if (!wordKeys[charCount]) {
-            wordKeys[charCount] = []
+        const key = charCount.join('#')
+        if (!wordKeys[key]) {
+            wordKeys[key] = []
         }
-        wordKeys[charCount].push(str)
+        wordKeys[key].push(str)
     }
     return Object.values(wordKeys)
 };
