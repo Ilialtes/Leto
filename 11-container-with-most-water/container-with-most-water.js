@@ -3,20 +3,21 @@
  * @return {number}
  */
 var maxArea = function(height) {
-    let maxArea = 0 
-    p1 = 0
-    p2 = height.length-1
-    while(p1 < p2) {
-        minHeight =  Math.min(height[p1], height[p2])
-        distance = p2 - p1 
-        area = minHeight * distance
-        maxArea = Math.max(maxArea, area)
-        if(height[p1] <= height[p2]) {
-            p1++
-        } else {
-            p2--
-        }
+    let maxArea = 0
+    let left = 0
+    let rigth = height.length -1
     
+    while(left < rigth) {
+        const min = Math.min(height[left], height[rigth]);
+        currentArea = min * (rigth-left)
+
+        maxArea = Math.max(maxArea, currentArea)
+
+        if(height[left] < height[rigth]) {
+            left++
+        }else {
+            rigth--
+        }
     }
     return maxArea
 };
