@@ -4,19 +4,19 @@
  */
 var maxArea = function(height) {
     let maxArea = 0
-    let left = 0
-    let rigth = height.length -1
-    
-    while(left < rigth) {
-        const min = Math.min(height[left], height[rigth]);
-        currentArea = min * (rigth-left)
+    let j = 0
+    let k = height.length -1
+    while(j < k) {
+        
+        const min = Math.min(height[j], height[k])
+        const currenArea = min * (k-j)
 
-        maxArea = Math.max(maxArea, currentArea)
+        maxArea = Math.max(maxArea, currenArea)
 
-        if(height[left] < height[rigth]) {
-            left++
+        if(height[j] < height[k]) {
+            j++    
         }else {
-            rigth--
+            k--
         }
     }
     return maxArea
