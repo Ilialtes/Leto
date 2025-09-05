@@ -3,18 +3,18 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-    let anagramGroup= {}
-        for(let str of strs) {
-            let charCount = Array(26).fill(0)
-            for(let char of str) {
-                let index = char.charCodeAt(0) - 'a'.charCodeAt(0)
-                charCount[index]++
-            }
-            let key = charCount.join('#')
-            if(!anagramGroup[key]) {
-                anagramGroup[key] = []
-            }
-            anagramGroup[key].push(str)
+    let anagramGroups = {}
+
+    for(str of strs){
+        let charCount = Array(26).fill(0)
+        for(char of str) {
+            let index = char.charCodeAt(0) - 'a'.charCodeAt(0)
+            charCount[index]++
+        } 
+        if(!anagramGroups[charCount]){
+            anagramGroups[charCount] = []
         }
-        return Object.values(anagramGroup)
+        anagramGroups[charCount].push(str)
+    }
+    return Object.values(anagramGroups)
 }
