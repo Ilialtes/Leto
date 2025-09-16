@@ -7,21 +7,21 @@ var checkInclusion = function(s1, s2) {
     if(s1.length > s2.length) {
         return false
     }
-    aCharCodeAt = 'a'.charCodeAt(0)
-    let keyS1 = Array(26).fill(0)
-    let keyS2 = Array(26).fill(0)
 
+    s1Map = Array(26).fill(0)
+    s2Map = Array(26).fill(0)
+    let aCharCode = 'a'.charCodeAt(0)
     for(let i = 0; i < s1.length; i++) {
-        keyS1[s1.charCodeAt(i) - aCharCodeAt]++
-        keyS2[s2.charCodeAt(i) - aCharCodeAt]++    
+        s1Map[s1.charCodeAt(i) - aCharCode]++
+        s2Map[s2.charCodeAt(i) - aCharCode]++
     }
-    if (keyS1.toString() === keyS2.toString()) {
-        return true;
+    if(s1Map.toString() === s2Map.toString()) {
+        return true
     }
-    for(let i = s1.length; i < s2.length; i++) {
-        keyS2[s2.charCodeAt(i) - aCharCodeAt]++
-        keyS2[s2.charCodeAt(i - s1.length) - aCharCodeAt]--
-        if (keyS1.toString() === keyS2.toString()) {
+    for(let i = s1.length; i < s2.length; i++){
+        s2Map[s2.charCodeAt(i) - aCharCode]++
+        s2Map[s2.charCodeAt(i - s1.length) - aCharCode]--
+        if (s1Map.toString() === s2Map.toString()) {
             return true;
         }
     }
