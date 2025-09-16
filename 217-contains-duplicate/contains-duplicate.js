@@ -9,7 +9,7 @@ var containsDuplicate = function(nums) {
         if(numsMap[num]) {
             return true
         }
-        numsMap[num] = true
+        numsMap[num] = 1
     } 
     return false
 };
