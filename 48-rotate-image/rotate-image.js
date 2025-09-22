@@ -12,7 +12,17 @@ var rotate = function(matrix) {
         }
     }
     for(let i = 0; i < n; i++) {
-        matrix[i].reverse()
+        let left = 0
+        let rigth = n-1
+
+        while(left < rigth) {
+            let temp = matrix[i][left]
+            matrix[i][left] = matrix[i][rigth]
+            matrix[i][rigth] = temp
+
+            left++
+            rigth--
+        } 
     }
 };
 
